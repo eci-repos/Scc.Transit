@@ -1,0 +1,70 @@
+relationship 63baff37-54e1-4a44-a04a-5f688085482f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ridership.PeriodStartDate
+	toColumn: LocalDateTable_86573eff-3f8c-466a-86a1-6dfd258fde1a.Date
+
+relationship a9efe69a-1f22-4c6d-9d13-4fd7d839b5a9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ridership.PeriodEndDate
+	toColumn: LocalDateTable_789dd053-42ad-4b1d-bc44-002144034741.Date
+
+relationship 36ea705f-7c18-4b20-bb9c-b53f8ad4873a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Weather.ObservationDate
+	toColumn: LocalDateTable_64c21fad-958c-4e9a-9d0d-fa3f5f8cf053.Date
+
+relationship ce14079c-90f2-42e8-94b4-237b62fe9345
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TripPerformance.ObservedAtUtc
+	toColumn: LocalDateTable_de440012-3223-4a94-b358-e5e9ddf85d80.Date
+
+relationship af8f0db0-b656-4c37-892a-0e10d0180b31
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TripPerformance.ArrivalTimeUtc
+	toColumn: LocalDateTable_661127c6-41fc-423c-9f4f-3b859a3952ad.Date
+
+relationship 422ffbdc-c43f-4578-ae4c-5b0bbb874266
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TripPerformance.DepartureTimeUtc
+	toColumn: LocalDateTable_fc592144-1172-4914-bc6d-b256956ff882.Date
+
+relationship ee6c5953-812a-4f50-a2a7-4603e318332b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceAlerts.ObservedAtUtc
+	toColumn: LocalDateTable_0af67952-1eb6-4750-ab2f-e903737492d8.Date
+
+relationship c741fc8e-b43b-46dc-97a7-659c3bb33359
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceAlerts.ActiveStartUtc
+	toColumn: LocalDateTable_202c7a30-2f5a-4644-9298-3d3a8c14e71b.Date
+
+relationship c8ae4807-c413-48c3-b9cb-8bbb23e61b32
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ServiceAlerts.ActiveEndUtc
+	toColumn: LocalDateTable_fbbab8b2-e245-4ddf-b1d6-7218748dcf5e.Date
+
+relationship 20b41f36-ee3e-4cdc-b4d7-c723bc694661
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CalendarEvents.EventDate
+	toColumn: LocalDateTable_99b4f497-7bc1-43fb-ae63-9a0fe19bf54c.Date
+
+relationship 6c957b17-3dd5-46e1-a7ad-8b591a06d9b9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TrafficIncidents.ObservedAtUtc
+	toColumn: LocalDateTable_de9763e3-ee4d-46a4-97ab-54336156e92a.Date
+
+relationship ffe5c65c-39a6-40c2-bfa2-7ac862a4e1d1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TrafficIncidents.IncidentStartUtc
+	toColumn: LocalDateTable_d79cd070-45d5-409d-ac8c-cfefe2311611.Date
+
+relationship 0598b4d9-e2ef-4d38-aa0b-5b47ae6144a8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TrafficIncidents.IncidentEndUtc
+	toColumn: LocalDateTable_4f9fd41d-e559-4bd7-98fd-993264f45acd.Date
+
+relationship 5fb1d940-5c0f-4f18-9dfe-b423c9e74182
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AirQuality.ObservationDate
+	toColumn: LocalDateTable_50e498ef-bcc3-4138-b788-c4df63ebcbe6.Date
+

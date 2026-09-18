@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "weather",
+  "position": {
+    "x": 32,
+    "y": 170,
+    "z": 0,
+    "height": 300,
+    "width": 600,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "WeatherPerception"
+                }
+              },
+              "queryRef": "Weather.WeatherPerception",
+              "nativeQueryRef": "WeatherPerception",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "Weather Days"
+                }
+              },
+              "queryRef": "Weather.Weather Days",
+              "nativeQueryRef": "Weather Days"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

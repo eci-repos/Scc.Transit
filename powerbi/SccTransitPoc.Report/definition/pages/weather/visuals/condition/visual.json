@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "condition",
+  "position": {
+    "y": 170,
+    "x": 650,
+    "z": 0,
+    "height": 300,
+    "width": 590,
+    "tabOrder": 3
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "ObservationDate"
+                }
+              },
+              "queryRef": "Weather.ObservationDate",
+              "nativeQueryRef": "ObservationDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "StationName"
+                }
+              },
+              "queryRef": "Weather.StationName",
+              "nativeQueryRef": "StationName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "WeatherPerception"
+                }
+              },
+              "queryRef": "Weather.WeatherPerception",
+              "nativeQueryRef": "WeatherPerception"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "TemperatureAvgF"
+                }
+              },
+              "queryRef": "Weather.TemperatureAvgF",
+              "nativeQueryRef": "TemperatureAvgF"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "PrecipitationInches"
+                }
+              },
+              "queryRef": "Weather.PrecipitationInches",
+              "nativeQueryRef": "PrecipitationInches"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "WindSpeedMph"
+                }
+              },
+              "queryRef": "Weather.WindSpeedMph",
+              "nativeQueryRef": "WindSpeedMph"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "WeatherCondition"
+                }
+              },
+              "queryRef": "Weather.WeatherCondition",
+              "nativeQueryRef": "WeatherCondition"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

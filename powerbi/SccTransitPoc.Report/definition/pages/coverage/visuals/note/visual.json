@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "note",
+  "position": {
+    "y": 500,
+    "x": 900,
+    "z": 0,
+    "height": 120,
+    "width": 340,
+    "tabOrder": 3
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "LocationType"
+                }
+              },
+              "queryRef": "Stops.LocationType",
+              "nativeQueryRef": "LocationType"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "ParentStation"
+                }
+              },
+              "queryRef": "Stops.ParentStation",
+              "nativeQueryRef": "ParentStation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "StopCode"
+                }
+              },
+              "queryRef": "Stops.StopCode",
+              "nativeQueryRef": "StopCode"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

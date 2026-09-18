@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "aqi",
+  "position": {
+    "y": 500,
+    "x": 650,
+    "z": 0,
+    "height": 180,
+    "width": 590,
+    "tabOrder": 6
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "DatasetName"
+                }
+              },
+              "queryRef": "ContextStatus.DatasetName",
+              "nativeQueryRef": "DatasetName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "SourceName"
+                }
+              },
+              "queryRef": "ContextStatus.SourceName",
+              "nativeQueryRef": "SourceName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "ContextStatus.Status",
+              "nativeQueryRef": "Status"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

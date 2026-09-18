@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "SccTransitPoc"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "80c5c430-485d-4353-8683-e94d30ca1f16"
+  }
+}

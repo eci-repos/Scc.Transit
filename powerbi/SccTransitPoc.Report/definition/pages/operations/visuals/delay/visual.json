@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "delay",
+  "position": {
+    "x": 32,
+    "y": 170,
+    "z": 0,
+    "height": 300,
+    "width": 600,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "DatasetName"
+                }
+              },
+              "queryRef": "ContextStatus.DatasetName",
+              "nativeQueryRef": "DatasetName",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "Context Rows"
+                }
+              },
+              "queryRef": "ContextStatus.Context Rows",
+              "nativeQueryRef": "Context Rows"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

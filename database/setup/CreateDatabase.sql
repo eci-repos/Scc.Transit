@@ -1,0 +1,5 @@
+IF DB_ID(N'SccTransitPoc') IS NULL
+BEGIN
+    CREATE DATABASE SccTransitPoc;
+END;
+GO

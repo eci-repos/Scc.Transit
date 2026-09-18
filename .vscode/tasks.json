@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SCC Transit: Load POC database",
+      "type": "shell",
+      "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/load_poc.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "SCC Transit: Validate POC database",
+      "type": "shell",
+      "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/validate_poc.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "SCC Transit: Classify weather",
+      "type": "shell",
+      "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/classify_weather.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "SCC Transit: Load current GTFS coordinates",
+      "type": "shell",
+      "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/load_gtfs_static.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "SCC Transit: Load vehicle positions",
+      "type": "shell",
+      "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/load_vehicle_positions.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "SCC Transit: Load GTFS-Realtime trip updates",
+      "type": "shell",
+      "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/load_gtfs_realtime.ps1 -FeedType trip_updates",
+      "problemMatcher": []
+    },
+    {
+      "label": "SCC Transit: Load GTFS-Realtime service alerts",
+      "type": "shell",
+      "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/load_gtfs_realtime.ps1 -FeedType service_alerts",
+      "problemMatcher": []
+    }
+  ]
+}

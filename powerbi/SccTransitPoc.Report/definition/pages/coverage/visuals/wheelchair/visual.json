@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "wheelchair",
+  "position": {
+    "x": 900,
+    "y": 170,
+    "z": 0,
+    "height": 300,
+    "width": 340,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "WheelchairBoarding"
+                }
+              },
+              "queryRef": "Stops.WheelchairBoarding",
+              "nativeQueryRef": "WheelchairBoarding",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "Stop Count"
+                }
+              },
+              "queryRef": "Stops.Stop Count",
+              "nativeQueryRef": "Stop Count"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "routes",
+  "position": {
+    "x": 32,
+    "y": 170,
+    "z": 0,
+    "height": 450,
+    "width": 850,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "StopId"
+                }
+              },
+              "queryRef": "Stops.StopId",
+              "nativeQueryRef": "StopId"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "StopName"
+                }
+              },
+              "queryRef": "Stops.StopName",
+              "nativeQueryRef": "StopName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "StopLat"
+                }
+              },
+              "queryRef": "Stops.StopLat",
+              "nativeQueryRef": "StopLat"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "StopLon"
+                }
+              },
+              "queryRef": "Stops.StopLon",
+              "nativeQueryRef": "StopLon"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stops"
+                    }
+                  },
+                  "Property": "WheelchairBoarding"
+                }
+              },
+              "queryRef": "Stops.WheelchairBoarding",
+              "nativeQueryRef": "WheelchairBoarding"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "52ce59fc20b039300465",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Stops"
+              }
+            },
+            "Property": "StopId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "508f24ac9ad2ec502383",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Stops"
+              }
+            },
+            "Property": "StopName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f9c26f3546497690d138",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Stops"
+              }
+            },
+            "Property": "StopLat"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "78f9464302b7b0225e09",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Stops"
+              }
+            },
+            "Property": "StopLon"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "85325d24bd90d35097cd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Stops"
+              }
+            },
+            "Property": "WheelchairBoarding"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

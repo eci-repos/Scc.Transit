@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "service",
+  "position": {
+    "x": 32,
+    "y": 24,
+    "z": 0,
+    "height": 300,
+    "width": 600,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "RouteId"
+                }
+              },
+              "queryRef": "Ridership.RouteId",
+              "nativeQueryRef": "RouteId",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "Total Boardings"
+                }
+              },
+              "queryRef": "Ridership.Total Boardings",
+              "nativeQueryRef": "Total Boardings"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

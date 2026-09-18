@@ -1,0 +1,6 @@
+CREATE SCHEMA staging;
+GO
+CREATE SCHEMA warehouse;
+GO
+CREATE SCHEMA mart;
+GO

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "detail",
+  "position": {
+    "y": 500,
+    "x": 32,
+    "z": 0,
+    "height": 180,
+    "width": 1208,
+    "tabOrder": 5
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "CalendarYear"
+                }
+              },
+              "queryRef": "Ridership.CalendarYear",
+              "nativeQueryRef": "CalendarYear"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "PeriodStartDate"
+                }
+              },
+              "queryRef": "Ridership.PeriodStartDate",
+              "nativeQueryRef": "PeriodStartDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "ServiceName"
+                }
+              },
+              "queryRef": "Ridership.ServiceName",
+              "nativeQueryRef": "ServiceName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "RouteId"
+                }
+              },
+              "queryRef": "Ridership.RouteId",
+              "nativeQueryRef": "RouteId"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "Total Boardings"
+                }
+              },
+              "queryRef": "Ridership.Total Boardings",
+              "nativeQueryRef": "Total Boardings"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "Expected Riders (Prior Year)"
+                }
+              },
+              "queryRef": "Ridership.Expected Riders (Prior Year)",
+              "nativeQueryRef": "Expected Riders (Prior Year)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "Variance %"
+                }
+              },
+              "queryRef": "Ridership.Variance %",
+              "nativeQueryRef": "Variance %"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

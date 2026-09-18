@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "SccTransitPoc"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "088ce3da-fbdd-4afb-8532-2387d7736079"
+  }
+}

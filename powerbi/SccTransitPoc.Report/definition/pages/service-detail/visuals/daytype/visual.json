@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "daytype",
+  "position": {
+    "x": 650,
+    "y": 24,
+    "z": 0,
+    "height": 300,
+    "width": 590,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "DayTypeName"
+                }
+              },
+              "queryRef": "Ridership.DayTypeName",
+              "nativeQueryRef": "DayTypeName",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "Total Boardings"
+                }
+              },
+              "queryRef": "Ridership.Total Boardings",
+              "nativeQueryRef": "Total Boardings"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

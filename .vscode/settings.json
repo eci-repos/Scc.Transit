@@ -1,0 +1,9 @@
+{
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "sql.databaseProjects.dotnetCoreSqlProj": true,
+  "[sql]": {
+    "editor.defaultFormatter": "ms-mssql.mssql",
+    "editor.formatOnSave": false
+  }
+}

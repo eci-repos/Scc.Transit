@@ -1,0 +1,43 @@
+table ContextStatus
+	lineageTag: a2672054-a4f4-4085-ae72-dcbcd19bb896
+
+	measure 'Context Datasets' = COUNTROWS(ContextStatus)
+		lineageTag: f60e4423-5a9c-4e72-be3f-d50ea2247920
+
+	measure 'Context Rows' = SUM('ContextStatus'[RowCount])
+		lineageTag: 385b85d1-7383-4b5d-a00f-d89904f1dabf
+
+	column DatasetName
+		dataType: string
+		lineageTag: 5fa265a6-3e13-48c9-93cf-5a133d47d15c
+		sourceColumn: DatasetName
+
+	column RowCount
+		dataType: int64
+		lineageTag: 55c87936-470e-4782-98d6-9e69cc6d06be
+		sourceColumn: RowCount
+
+	column Status
+		dataType: string
+		lineageTag: 764bb167-d386-4cf9-b4a1-3c90daebb70d
+		sourceColumn: Status
+
+	column SourceName
+		dataType: string
+		lineageTag: 694dac0a-95b6-4604-b277-44511f40f865
+		sourceColumn: SourceName
+
+	column NextAction
+		dataType: string
+		lineageTag: b436a1a2-30e0-4f53-a563-68c7e8977971
+		sourceColumn: NextAction
+
+	partition ContextStatus = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_ContextDataStatus"]}[Data]
+					in
+					Navigation
+

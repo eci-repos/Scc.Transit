@@ -1,0 +1,95 @@
+table CalendarEvents
+	lineageTag: cdc411a0-6e5a-4734-9cf9-c2aba475f51c
+
+	measure 'Event Count' = COUNTROWS(CalendarEvents)
+		lineageTag: 4e570b1e-191f-42af-851c-e96542894fce
+
+	column EventDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cbee0120-2da2-4437-bcf9-8b0b39f982d9
+		summarizeBy: none
+		sourceColumn: EventDate
+
+		variation Variation
+			isDefault
+			relationship: 20b41f36-ee3e-4cdc-b4d7-c723bc694661
+			defaultHierarchy: LocalDateTable_99b4f497-7bc1-43fb-ae63-9a0fe19bf54c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EventName
+		dataType: string
+		lineageTag: 4512e3a3-2442-428b-b635-dcac6f11dbe6
+		summarizeBy: none
+		sourceColumn: EventName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EventType
+		dataType: string
+		lineageTag: 933f81b6-bf0d-4ce6-962a-901593a4d632
+		summarizeBy: none
+		sourceColumn: EventType
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationName
+		dataType: string
+		lineageTag: b8e22be3-25d5-4eaf-a3b4-5c93f585cfee
+		summarizeBy: none
+		sourceColumn: LocationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: 23cc0096-20a6-4053-b70f-d83989f60677
+		summarizeBy: sum
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: double
+		lineageTag: eabc8d35-bf14-4565-9121-3a887e4733bd
+		summarizeBy: sum
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: 57fd1e9f-1591-4558-9342-4b13e193e035
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: 1e562783-fb41-4e73-ba15-30e539ea084f
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: 92e1c2d0-db74-4bba-9a0a-9883778a9328
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CalendarEvents = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_CalendarEvents"]}[Data]
+					in
+					Navigation
+

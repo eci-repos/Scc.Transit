@@ -1,0 +1,148 @@
+table TripPerformance
+	lineageTag: 401c0758-f22e-44fa-a809-2f40078fa8e4
+
+	measure 'Trip Update Count' = COUNTROWS(TripPerformance)
+		lineageTag: ce11f01d-4308-4bd1-a8e5-e04010b2a49b
+
+	measure 'Average Arrival Delay (min)' = DIVIDE(AVERAGE('TripPerformance'[ArrivalDelaySeconds]), 60)
+		lineageTag: e0473e01-5f35-4e71-a5db-3e2c81ca73fa
+
+	measure 'Delayed Updates' = CALCULATE(COUNTROWS('TripPerformance'), 'TripPerformance'[ArrivalDelaySeconds] > 300)
+		lineageTag: 9295ba95-2199-4a5d-b258-1490791d560b
+
+	column ObservedAtUtc
+		dataType: dateTime
+		lineageTag: 874c3da0-88e4-4a23-b5e2-ef91443098e6
+		summarizeBy: none
+		sourceColumn: ObservedAtUtc
+
+		variation Variation
+			isDefault
+			relationship: ce14079c-90f2-42e8-94b4-237b62fe9345
+			defaultHierarchy: LocalDateTable_de440012-3223-4a94-b358-e5e9ddf85d80.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TripId
+		dataType: string
+		lineageTag: 1254d5be-ac41-42c7-b430-2cf99d06ef4a
+		summarizeBy: none
+		sourceColumn: TripId
+
+		annotation SummarizationSetBy = Automatic
+
+	column RouteId
+		dataType: string
+		lineageTag: c91a53e1-3997-409e-a8e3-7f7bb62fb456
+		summarizeBy: none
+		sourceColumn: RouteId
+
+		annotation SummarizationSetBy = Automatic
+
+	column VehicleId
+		dataType: string
+		lineageTag: 25244571-78ac-46b2-a293-074d53bc77ed
+		summarizeBy: none
+		sourceColumn: VehicleId
+
+		annotation SummarizationSetBy = Automatic
+
+	column StopId
+		dataType: string
+		lineageTag: 1e6cf762-03bd-4320-876b-3dd9ecc36029
+		summarizeBy: none
+		sourceColumn: StopId
+
+		annotation SummarizationSetBy = Automatic
+
+	column StopSequence
+		dataType: int64
+		lineageTag: cbcda73d-2cdf-40be-94c1-4bbc703098f1
+		summarizeBy: sum
+		sourceColumn: StopSequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column ArrivalTimeUtc
+		dataType: dateTime
+		lineageTag: 9143715f-9a94-49d5-9f7f-84be5e1d5951
+		summarizeBy: none
+		sourceColumn: ArrivalTimeUtc
+
+		variation Variation
+			isDefault
+			relationship: af8f0db0-b656-4c37-892a-0e10d0180b31
+			defaultHierarchy: LocalDateTable_661127c6-41fc-423c-9f4f-3b859a3952ad.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartureTimeUtc
+		dataType: dateTime
+		lineageTag: 76e5dce9-0f45-456d-9926-8cba396c24f5
+		summarizeBy: none
+		sourceColumn: DepartureTimeUtc
+
+		variation Variation
+			isDefault
+			relationship: 422ffbdc-c43f-4578-ae4c-5b0bbb874266
+			defaultHierarchy: LocalDateTable_fc592144-1172-4914-bc6d-b256956ff882.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ArrivalDelaySeconds
+		dataType: int64
+		lineageTag: a956f97e-68c0-402e-9ab0-1c4ff58ca741
+		summarizeBy: sum
+		sourceColumn: ArrivalDelaySeconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartureDelaySeconds
+		dataType: int64
+		lineageTag: 94bd0934-e399-4081-a5ea-882798c7abc9
+		summarizeBy: sum
+		sourceColumn: DepartureDelaySeconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column ScheduleRelationship
+		dataType: string
+		lineageTag: d4938006-91ce-419c-8ab8-93cfe9d04c1e
+		summarizeBy: none
+		sourceColumn: ScheduleRelationship
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: 48a111c2-af78-40b3-ad41-360854685380
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: e098821c-3f2e-423e-94e7-24243b97c54a
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: 66df7673-9aeb-461c-96f8-e4df7ca8bc18
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TripPerformance = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_TripPerformance"]}[Data]
+					in
+					Navigation
+

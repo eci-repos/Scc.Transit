@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU02",
+      "reportVersionAtImport": {
+        "report": "3.1.0",
+        "page": "2.3.0",
+        "visual": "2.6.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU02",
+          "path": "BaseThemes/CY26SU02.json",
+          "type": "BaseTheme"
+        }
+      ],
+      "type": "SharedResources"
+    }
+  ],
+  "settings": {
+    "allowChangeFilterTypes": true,
+    "useDefaultAggregateDisplayName": true,
+    "useStylableVisualContainerHeader": true,
+    "useEnhancedTooltips": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "exportDataMode": "AllowSummarized"
+  }
+}

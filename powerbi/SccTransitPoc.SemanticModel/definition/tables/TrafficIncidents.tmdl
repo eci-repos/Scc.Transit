@@ -1,0 +1,142 @@
+table TrafficIncidents
+	lineageTag: 5689a6e3-bb70-43ca-8597-3f382604480a
+
+	measure 'Incident Count' = COUNTROWS(TrafficIncidents)
+		lineageTag: 117d44ea-ad81-4d9f-929d-bd4db481f75b
+
+	column ObservedAtUtc
+		dataType: dateTime
+		lineageTag: 146f5fc6-8c72-4870-989c-a951d6506be2
+		summarizeBy: none
+		sourceColumn: ObservedAtUtc
+
+		variation Variation
+			isDefault
+			relationship: 6c957b17-3dd5-46e1-a7ad-8b591a06d9b9
+			defaultHierarchy: LocalDateTable_de9763e3-ee4d-46a4-97ab-54336156e92a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncidentId
+		dataType: string
+		lineageTag: 13005c0d-4528-4cdc-be6c-55b1d458425c
+		summarizeBy: none
+		sourceColumn: IncidentId
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncidentStartUtc
+		dataType: dateTime
+		lineageTag: 961f288a-e3b5-4aa8-8647-203757730d24
+		summarizeBy: none
+		sourceColumn: IncidentStartUtc
+
+		variation Variation
+			isDefault
+			relationship: ffe5c65c-39a6-40c2-bfa2-7ac862a4e1d1
+			defaultHierarchy: LocalDateTable_d79cd070-45d5-409d-ac8c-cfefe2311611.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncidentEndUtc
+		dataType: dateTime
+		lineageTag: a98d9c5b-fb5f-439f-8362-ad8cd8e41057
+		summarizeBy: none
+		sourceColumn: IncidentEndUtc
+
+		variation Variation
+			isDefault
+			relationship: 0598b4d9-e2ef-4d38-aa0b-5b47ae6144a8
+			defaultHierarchy: LocalDateTable_4f9fd41d-e559-4bd7-98fd-993264f45acd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncidentType
+		dataType: string
+		lineageTag: 64a6d843-601a-4fd9-bdf1-ffaa14c79ba7
+		summarizeBy: none
+		sourceColumn: IncidentType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Severity
+		dataType: string
+		lineageTag: ce06d9f4-52c7-4b44-9493-3dcb8c5c6e7b
+		summarizeBy: none
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 7718295a-a3b7-4ed3-8c62-91ed76f8de99
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column RoadName
+		dataType: string
+		lineageTag: f338135a-6aff-41c0-9b3d-cf2e9a84d5bb
+		summarizeBy: none
+		sourceColumn: RoadName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: 8e336457-2a41-49c4-b08a-611e181d0ab6
+		summarizeBy: sum
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: double
+		lineageTag: 030ebda8-2c3e-4747-b668-ffc4ebd27494
+		summarizeBy: sum
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescriptionText
+		dataType: string
+		lineageTag: 61922c15-6578-4963-83b9-d33bdb2d4b7f
+		summarizeBy: none
+		sourceColumn: DescriptionText
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: e4a8ddc1-1f8a-42a7-9660-99eac4fcdad6
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: eb804730-cc9b-4866-b8b1-3573a5374604
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: dffea49a-6fff-4393-aca8-35428668bc20
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TrafficIncidents = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_TrafficIncidents"]}[Data]
+					in
+					Navigation
+

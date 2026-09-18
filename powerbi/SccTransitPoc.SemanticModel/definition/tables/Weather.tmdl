@@ -1,0 +1,173 @@
+table Weather
+	lineageTag: 3c8f1fc7-0404-4bb2-9eb4-deee6fd9331e
+
+	measure 'Weather Days' = COUNTROWS(Weather)
+		lineageTag: 56d4fa9b-6cc6-4f14-b190-888fbd9b00d5
+
+	measure 'Average Temperature F' = AVERAGE('Weather'[TemperatureAvgF])
+		lineageTag: a1d11824-5802-49b2-88bf-f38a78738fff
+
+	measure 'Average Precipitation' = AVERAGE('Weather'[PrecipitationInches])
+		lineageTag: 2400b07b-e922-4dbe-b2a7-2936785a52e5
+
+	column ObservationDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eb9a8572-e237-4a15-8c5e-a5805b926118
+		summarizeBy: none
+		sourceColumn: ObservationDate
+
+		variation Variation
+			isDefault
+			relationship: 36ea705f-7c18-4b20-bb9c-b53f8ad4873a
+			defaultHierarchy: LocalDateTable_64c21fad-958c-4e9a-9d0d-fa3f5f8cf053.'Date Hierarchy'
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarYear
+		dataType: int64
+		lineageTag: 9433c096-4b11-4178-bbe4-47ce5717f9bf
+		summarizeBy: sum
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column StationId
+		dataType: string
+		lineageTag: 420a1102-697c-4f77-bd25-e0e3c8b4a823
+		summarizeBy: none
+		sourceColumn: StationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column StationName
+		dataType: string
+		lineageTag: 09f7cb2f-e82c-44e3-b90a-15bf1e012b2c
+		summarizeBy: none
+		sourceColumn: StationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeatherPerceptionCode
+		dataType: string
+		lineageTag: 9d1b8e6c-3367-44b6-aaa1-a8308fa3d108
+		summarizeBy: none
+		sourceColumn: WeatherPerceptionCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeatherPerception
+		dataType: string
+		lineageTag: 98b8ace9-a257-4ab0-bb75-841e3f7d847f
+		summarizeBy: none
+		sourceColumn: WeatherPerception
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClassPriority
+		dataType: int64
+		lineageTag: 47962e88-29f1-4a08-9f71-d6a0aa67592f
+		summarizeBy: sum
+		sourceColumn: ClassPriority
+
+		annotation SummarizationSetBy = Automatic
+
+	column TemperatureAvgF
+		dataType: double
+		lineageTag: 397de5b3-b14d-4372-8a3f-4e044adb4b46
+		summarizeBy: sum
+		sourceColumn: TemperatureAvgF
+
+		annotation SummarizationSetBy = Automatic
+
+	column TemperatureMinF
+		dataType: double
+		lineageTag: d2820394-af17-4ffc-a33a-b522c2de9e31
+		summarizeBy: sum
+		sourceColumn: TemperatureMinF
+
+		annotation SummarizationSetBy = Automatic
+
+	column TemperatureMaxF
+		dataType: double
+		lineageTag: 12de5f5f-6e67-4066-ae9b-6c18fac5f8c2
+		summarizeBy: sum
+		sourceColumn: TemperatureMaxF
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrecipitationInches
+		dataType: double
+		lineageTag: 4e0fb5f3-abc5-400d-b52c-05a4a69bdc97
+		summarizeBy: sum
+		sourceColumn: PrecipitationInches
+
+		annotation SummarizationSetBy = Automatic
+
+	column WindSpeedMph
+		dataType: double
+		lineageTag: 17c6eb79-d1ec-4c7b-a4eb-8a3f4ec9e994
+		summarizeBy: sum
+		sourceColumn: WindSpeedMph
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisibilityMiles
+		dataType: double
+		lineageTag: fb74ba3d-6b1d-4514-ac7d-5a20fcb8fddf
+		summarizeBy: sum
+		sourceColumn: VisibilityMiles
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeatherCondition
+		dataType: string
+		lineageTag: 358b5156-0c38-45d6-8a13-9ffc55a2a4aa
+		summarizeBy: none
+		sourceColumn: WeatherCondition
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClassificationMethod
+		dataType: string
+		lineageTag: a6f96054-71fa-434f-8ec9-289350a609f1
+		summarizeBy: none
+		sourceColumn: ClassificationMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: fd428cfb-5cdd-449d-8419-d57c757ec271
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: e9d9bfd9-96cd-495f-96be-52e9253f8da8
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: 5ee15dc4-d335-4216-8138-611ba6b527ef
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Weather = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_WeatherDaily"]}[Data]
+					in
+					Navigation
+

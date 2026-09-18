@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "total",
+  "position": {
+    "y": 24,
+    "x": 32,
+    "z": 0,
+    "height": 120,
+    "width": 270,
+    "tabOrder": 0
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "Total Boardings"
+                }
+              },
+              "queryRef": "Ridership.Total Boardings",
+              "nativeQueryRef": "Total Boardings"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

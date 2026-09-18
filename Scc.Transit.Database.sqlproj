@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.Build.Sql/2.3.0">
+  <PropertyGroup>
+    <Name>Scc.Transit.Database</Name>
+    <ProjectGuid>{7C26D512-9BB0-4F95-96A4-2A6B8AB7E6E9}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetConnectionString>Data Source=localhost;Integrated Security=True;TrustServerCertificate=True;Initial Catalog=SccTransitPoc</TargetConnectionString>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <EnableDefaultSqlItems>false</EnableDefaultSqlItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Build Include="database\schemas\**\*.sql" />
+  </ItemGroup>
+</Project>

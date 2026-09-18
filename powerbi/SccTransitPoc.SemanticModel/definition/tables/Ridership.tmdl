@@ -1,0 +1,171 @@
+table Ridership
+	lineageTag: cc7534bb-3818-489f-b6f4-5a354bb7e1cd
+
+	measure 'Total Boardings' = CALCULATE(SUM('Ridership'[MetricValue]), 'Ridership'[MetricName] = "boardings")
+		lineageTag: 693241a1-c177-41b8-b467-e97463720a31
+
+	measure 'Expected Riders (Prior Year)' = CALCULATE([Total Boardings], FILTER(ALL('Ridership'[CalendarYear]), 'Ridership'[CalendarYear] = MAX('Ridership'[CalendarYear]) - 1))
+		lineageTag: 27f407e8-5f16-434d-bc5c-52cb727230ce
+
+	measure 'Variance to Prior Year' = [Total Boardings] - [Expected Riders (Prior Year)]
+		lineageTag: 2ebfe04c-6f47-433c-9dce-08a3b838ff83
+
+	measure 'Variance %' = DIVIDE([Variance to Prior Year], [Expected Riders (Prior Year)])
+		lineageTag: f77bc273-3331-4196-89bf-94f406605993
+
+	measure 'Average Metric Value' = AVERAGE('Ridership'[MetricValue])
+		lineageTag: a82ac2c9-709e-4d41-be11-800b348fc9fb
+
+	column CalendarYear
+		dataType: int64
+		lineageTag: d8d3e285-57a6-4726-b520-5a6086ac5115
+		summarizeBy: sum
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeriodStartDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6c98830a-f03a-4717-b39c-21be4e2e813c
+		summarizeBy: none
+		sourceColumn: PeriodStartDate
+
+		variation Variation
+			isDefault
+			relationship: 63baff37-54e1-4a44-a04a-5f688085482f
+			defaultHierarchy: LocalDateTable_86573eff-3f8c-466a-86a1-6dfd258fde1a.'Date Hierarchy'
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeriodEndDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9caa7770-abc5-4cf8-a919-252a3c79b169
+		summarizeBy: none
+		sourceColumn: PeriodEndDate
+
+		variation Variation
+			isDefault
+			relationship: a9efe69a-1f22-4c6d-9d13-4fd7d839b5a9
+			defaultHierarchy: LocalDateTable_789dd053-42ad-4b1d-bc44-002144034741.'Date Hierarchy'
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column OperatorName
+		dataType: string
+		lineageTag: bf2a27d7-8637-4b9d-b479-64c5f0f889b7
+		summarizeBy: none
+		sourceColumn: OperatorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServiceName
+		dataType: string
+		lineageTag: e6a7c8a8-1797-454e-a7e8-f14be389fbe2
+		summarizeBy: none
+		sourceColumn: ServiceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RouteId
+		dataType: string
+		lineageTag: b3aa11c4-fc76-42e6-b280-0a32d8bc211f
+		summarizeBy: none
+		sourceColumn: RouteId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineTypeName
+		dataType: string
+		lineageTag: 8f49b610-c07d-4920-b856-64fc9e328f7e
+		summarizeBy: none
+		sourceColumn: LineTypeName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayTypeName
+		dataType: string
+		lineageTag: 7fe81271-9555-4d5c-acfe-9c783ae0e9f9
+		summarizeBy: none
+		sourceColumn: DayTypeName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RecordType
+		dataType: string
+		lineageTag: f53cb75c-1328-480c-be8d-a497b8ef7e80
+		summarizeBy: none
+		sourceColumn: RecordType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricName
+		dataType: string
+		lineageTag: 22e5e3e9-cd24-4af1-8181-b97d261df2b6
+		summarizeBy: none
+		sourceColumn: MetricName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricValue
+		dataType: double
+		lineageTag: 89716f93-02d6-482d-9808-78c9fb6a27a5
+		summarizeBy: sum
+		sourceColumn: MetricValue
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitName
+		dataType: string
+		lineageTag: 20888a10-7fc3-4fb6-9525-f1e2207273bf
+		summarizeBy: none
+		sourceColumn: UnitName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataStatus
+		dataType: string
+		lineageTag: 53c6e9df-6609-451e-8805-39d7c55f9385
+		summarizeBy: none
+		sourceColumn: DataStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: ce4b97af-41c1-4664-b56d-8a0abe168fa4
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: bdda9a88-eb1c-436c-b419-94974b5b7a4d
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: 4bf23079-1fa0-460c-ad15-999843ebf1ca
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ridership = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_RidershipSummary"]}[Data]
+					in
+					Navigation
+

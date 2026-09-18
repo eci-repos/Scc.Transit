@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "join",
+  "position": {
+    "y": 500,
+    "x": 32,
+    "z": 0,
+    "height": 180,
+    "width": 1208,
+    "tabOrder": 4
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "ObservationDate"
+                }
+              },
+              "queryRef": "Weather.ObservationDate",
+              "nativeQueryRef": "ObservationDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "CalendarYear"
+                }
+              },
+              "queryRef": "Weather.CalendarYear",
+              "nativeQueryRef": "CalendarYear"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "WeatherPerception"
+                }
+              },
+              "queryRef": "Weather.WeatherPerception",
+              "nativeQueryRef": "WeatherPerception"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Weather"
+                    }
+                  },
+                  "Property": "ClassificationMethod"
+                }
+              },
+              "queryRef": "Weather.ClassificationMethod",
+              "nativeQueryRef": "ClassificationMethod"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

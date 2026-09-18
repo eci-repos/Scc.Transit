@@ -1,0 +1,106 @@
+table AirQuality
+	lineageTag: 3b4d56c2-9c6a-43e3-b7ce-28f200037d1a
+
+	measure 'AQI Days' = COUNTROWS(AirQuality)
+		lineageTag: 732d6a1a-b776-404d-81a4-05797b5bd88d
+
+	measure 'Average AQI' = AVERAGE('AirQuality'[AirQualityIndex])
+		lineageTag: 57b31185-e0e3-471c-b3e4-031bd239a338
+
+	column ObservationDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a113822e-48b0-4885-8ea6-b980c062d6ce
+		summarizeBy: none
+		sourceColumn: ObservationDate
+
+		variation Variation
+			isDefault
+			relationship: 5fb1d940-5c0f-4f18-9dfe-b423c9e74182
+			defaultHierarchy: LocalDateTable_50e498ef-bcc3-4138-b788-c4df63ebcbe6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column StationId
+		dataType: string
+		lineageTag: ace62156-9cc3-4a0e-9890-ada0e159704b
+		summarizeBy: none
+		sourceColumn: StationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column StationName
+		dataType: string
+		lineageTag: 5fc0852e-84f0-4d4b-9e6a-7b8358b040b1
+		summarizeBy: none
+		sourceColumn: StationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AirQualityIndex
+		dataType: int64
+		lineageTag: d29eb340-70f7-4bd6-86d3-5fd09247d5b9
+		summarizeBy: sum
+		sourceColumn: AirQualityIndex
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrimaryPollutant
+		dataType: string
+		lineageTag: 254a9401-c06a-49db-95a1-516881fd6c0c
+		summarizeBy: none
+		sourceColumn: PrimaryPollutant
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 2c9042b7-5e1a-4cd9-98a5-649a1a5ab5f8
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column SmokeFlag
+		dataType: boolean
+		lineageTag: 21fe8819-4fea-4591-9766-356625be78e9
+		summarizeBy: none
+		sourceColumn: SmokeFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: 671722ff-3c87-49de-8222-27ddbb10629b
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: b632dc57-67f4-4409-af93-0b80910b0b3c
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: 74dc4a24-aca7-49dd-ba4b-a0e1d00ddd09
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AirQuality = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_AirQualityDaily"]}[Data]
+					in
+					Navigation
+

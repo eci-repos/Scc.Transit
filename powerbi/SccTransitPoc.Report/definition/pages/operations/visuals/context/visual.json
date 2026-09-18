@@ -1,0 +1,94 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "context",
+  "position": {
+    "y": 170,
+    "x": 650,
+    "z": 0,
+    "height": 300,
+    "width": 590,
+    "tabOrder": 4
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "DatasetName"
+                }
+              },
+              "queryRef": "ContextStatus.DatasetName",
+              "nativeQueryRef": "DatasetName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "RowCount"
+                }
+              },
+              "queryRef": "ContextStatus.RowCount",
+              "nativeQueryRef": "RowCount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "ContextStatus.Status",
+              "nativeQueryRef": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "SourceName"
+                }
+              },
+              "queryRef": "ContextStatus.SourceName",
+              "nativeQueryRef": "SourceName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "NextAction"
+                }
+              },
+              "queryRef": "ContextStatus.NextAction",
+              "nativeQueryRef": "NextAction"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,134 @@
+table ServiceAlerts
+	lineageTag: 6f876859-9fa9-43c2-affa-7df35c27a062
+
+	measure 'Alert Count' = COUNTROWS(ServiceAlerts)
+		lineageTag: 6baf2e9a-336b-4486-a02b-e88859b957be
+
+	column ObservedAtUtc
+		dataType: dateTime
+		lineageTag: 963b04b5-fc1b-437c-81e9-d3b0b65a297f
+		summarizeBy: none
+		sourceColumn: ObservedAtUtc
+
+		variation Variation
+			isDefault
+			relationship: ee6c5953-812a-4f50-a2a7-4603e318332b
+			defaultHierarchy: LocalDateTable_0af67952-1eb6-4750-ab2f-e903737492d8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertId
+		dataType: string
+		lineageTag: 7e265a27-918b-4452-9611-5e2fffcf6735
+		summarizeBy: none
+		sourceColumn: AlertId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cause
+		dataType: string
+		lineageTag: 7242466f-8e59-495d-ba39-f5053e0edc8b
+		summarizeBy: none
+		sourceColumn: Cause
+
+		annotation SummarizationSetBy = Automatic
+
+	column Effect
+		dataType: string
+		lineageTag: aec532cd-d012-43ab-ad48-1b08e7b6c2b4
+		summarizeBy: none
+		sourceColumn: Effect
+
+		annotation SummarizationSetBy = Automatic
+
+	column HeaderText
+		dataType: string
+		lineageTag: bd27a0e2-2e78-4fb4-9f40-9fa06b63eeca
+		summarizeBy: none
+		sourceColumn: HeaderText
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescriptionText
+		dataType: string
+		lineageTag: 8f9a2db5-67fe-41c6-8d00-68772f9bd0a1
+		summarizeBy: none
+		sourceColumn: DescriptionText
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActiveStartUtc
+		dataType: dateTime
+		lineageTag: 7dbdc9e5-f747-4744-94c1-5ba30562e1e8
+		summarizeBy: none
+		sourceColumn: ActiveStartUtc
+
+		variation Variation
+			isDefault
+			relationship: c741fc8e-b43b-46dc-97a7-659c3bb33359
+			defaultHierarchy: LocalDateTable_202c7a30-2f5a-4644-9298-3d3a8c14e71b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActiveEndUtc
+		dataType: dateTime
+		lineageTag: 7dc5542f-bfb2-48b7-994d-172f8910c586
+		summarizeBy: none
+		sourceColumn: ActiveEndUtc
+
+		variation Variation
+			isDefault
+			relationship: c8ae4807-c413-48c3-b9cb-8bbb23e61b32
+			defaultHierarchy: LocalDateTable_fbbab8b2-e245-4ddf-b1d6-7218748dcf5e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column RouteId
+		dataType: string
+		lineageTag: 85f8a160-b984-4d88-8c6b-da060e3c7caf
+		summarizeBy: none
+		sourceColumn: RouteId
+
+		annotation SummarizationSetBy = Automatic
+
+	column StopId
+		dataType: string
+		lineageTag: 5f2c01bd-3671-4045-86f2-6955bc432ec8
+		summarizeBy: none
+		sourceColumn: StopId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: 6c93b222-eb85-4b47-b5e9-f6b3c0d5ecd7
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: ad158773-a202-41fc-8ee2-1739b7b77fe2
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: 378b7dc8-2ce4-48ec-aab5-a5c3c730e406
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ServiceAlerts = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_ServiceAlerts"]}[Data]
+					in
+					Navigation
+

@@ -1,0 +1,96 @@
+table Stops
+	lineageTag: 8ba64f8d-5c07-4cc3-b6b9-f101ec677b97
+
+	measure 'Stop Count' = COUNTROWS(Stops)
+		lineageTag: 97f54218-1595-4282-b10e-1a7a3d975a05
+
+	column StopId
+		dataType: string
+		lineageTag: bfb27103-cd29-4a78-949d-6fc3a0b70cc3
+		summarizeBy: none
+		sourceColumn: StopId
+
+		annotation SummarizationSetBy = Automatic
+
+	column StopCode
+		dataType: string
+		lineageTag: 043600d0-322f-4352-a091-afbafb566281
+		summarizeBy: none
+		sourceColumn: StopCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column StopName
+		dataType: string
+		lineageTag: 2e8a29a8-0bda-4bea-8ba9-a41a2f526134
+		summarizeBy: none
+		sourceColumn: StopName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StopLat
+		dataType: double
+		lineageTag: ea374133-e5b6-4b73-af68-103eef7dcded
+		summarizeBy: sum
+		sourceColumn: StopLat
+
+		annotation SummarizationSetBy = Automatic
+
+	column StopLon
+		dataType: double
+		lineageTag: 7e563328-2f1d-46da-802f-b1f10d04e39b
+		summarizeBy: sum
+		sourceColumn: StopLon
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationType
+		dataType: int64
+		lineageTag: 4c972aa2-55eb-47c2-8856-9a9cfa3285d9
+		summarizeBy: sum
+		sourceColumn: LocationType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentStation
+		dataType: string
+		lineageTag: 6159557d-8d98-4793-b6a5-9eaba7e1dfb7
+		summarizeBy: none
+		sourceColumn: ParentStation
+
+		annotation SummarizationSetBy = Automatic
+
+	column WheelchairBoarding
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b2bec09-6e17-4644-acab-17b1a55fda14
+		summarizeBy: sum
+		sourceColumn: WheelchairBoarding
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: string
+		lineageTag: 9da9babb-dcc4-49ee-b861-2199385896dd
+		summarizeBy: none
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceUrl
+		dataType: string
+		lineageTag: a05062d4-25ab-42ee-a105-d92779991db7
+		summarizeBy: none
+		sourceColumn: SourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Stops = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database(Server, Database),
+					Navigation = Source{[Schema="mart",Item="vw_GtfsStops"]}[Data]
+					in
+					Navigation
+

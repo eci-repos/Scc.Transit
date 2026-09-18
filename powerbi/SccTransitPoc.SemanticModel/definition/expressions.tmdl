@@ -1,0 +1,10 @@
+expression Server = "localhost" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 0745b89a-17cb-456d-89ad-43d6a6d901d8
+
+	annotation PBI_ResultType = Text
+
+expression Database = "SccTransitPoc" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 08490eeb-1526-45c7-b2fd-8462aaedc5e7
+
+	annotation PBI_ResultType = Text
+

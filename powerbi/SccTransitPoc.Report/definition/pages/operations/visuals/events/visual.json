@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "events",
+  "position": {
+    "y": 500,
+    "x": 32,
+    "z": 0,
+    "height": 180,
+    "width": 600,
+    "tabOrder": 5
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "DatasetName"
+                }
+              },
+              "queryRef": "ContextStatus.DatasetName",
+              "nativeQueryRef": "DatasetName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "ContextStatus.Status",
+              "nativeQueryRef": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "RowCount"
+                }
+              },
+              "queryRef": "ContextStatus.RowCount",
+              "nativeQueryRef": "RowCount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContextStatus"
+                    }
+                  },
+                  "Property": "NextAction"
+                }
+              },
+              "queryRef": "ContextStatus.NextAction",
+              "nativeQueryRef": "NextAction"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "detail",
+  "position": {
+    "y": 350,
+    "x": 32,
+    "z": 0,
+    "height": 330,
+    "width": 1208,
+    "tabOrder": 2
+  },
+  "visual": {
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "CalendarYear"
+                }
+              },
+              "queryRef": "Ridership.CalendarYear",
+              "nativeQueryRef": "CalendarYear"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "ServiceName"
+                }
+              },
+              "queryRef": "Ridership.ServiceName",
+              "nativeQueryRef": "ServiceName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "RouteId"
+                }
+              },
+              "queryRef": "Ridership.RouteId",
+              "nativeQueryRef": "RouteId"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "LineTypeName"
+                }
+              },
+              "queryRef": "Ridership.LineTypeName",
+              "nativeQueryRef": "LineTypeName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "DayTypeName"
+                }
+              },
+              "queryRef": "Ridership.DayTypeName",
+              "nativeQueryRef": "DayTypeName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "MetricValue"
+                }
+              },
+              "queryRef": "Ridership.MetricValue",
+              "nativeQueryRef": "MetricValue"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ridership"
+                    }
+                  },
+                  "Property": "DataStatus"
+                }
+              },
+              "queryRef": "Ridership.DataStatus",
+              "nativeQueryRef": "DataStatus"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
